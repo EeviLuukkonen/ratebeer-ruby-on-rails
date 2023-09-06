@@ -9,4 +9,8 @@ class Beer < ApplicationRecord
       return (ratings.sum(:score) / ratings.count).to_f
     end
   end
+
+  def to_s
+    return "#{self.name}" + ", " + " #{self.brewery.name}"
+  end
 end
