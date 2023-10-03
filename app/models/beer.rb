@@ -1,15 +1,7 @@
 class Beer < ApplicationRecord
+include RatingAverage
   belongs_to :brewery
-  has_many :ratings
-
-  def average_rating
-    if ratings.empty?
-      return nil
-    else
-      return (ratings.sum(:score) / ratings.count).to_f
-    end
-  end
-
+  has_many :ratings, dependent: :destroy
   def to_s
     return "#{self.name}" + ", " + " #{self.brewery.name}"
   end
