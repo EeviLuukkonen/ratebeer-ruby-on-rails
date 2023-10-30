@@ -2,7 +2,7 @@
 
 <ul>
  <% @ratings.each do |rating| %>
-   <li> <%= "#{rating.beer.name}" + " #{rating.score}" %> <%= button_to 'delete', rating, method: :delete, form: { data: { turbo_confirm: 'Are you sure you want to delete this rating?' } } %> </li>
+   <li> <%= "#{rating.beer.name}:" + " #{rating.score}" %> <%= link_to rating.user.username, rating.user %> </li>
  <% end %>
 </ul>
 
