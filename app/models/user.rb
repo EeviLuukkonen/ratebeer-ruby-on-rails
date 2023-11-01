@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 4 }
   validates :password, format: { with: /^(?=.*[A-Z])(?=.*\d)/, message: "must contain at least one uppercase letter and one number", multiline: true }
 
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 end
