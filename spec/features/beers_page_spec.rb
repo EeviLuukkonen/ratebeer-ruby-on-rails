@@ -13,6 +13,8 @@ describe "A new beer" do
     expect{
       click_button('Create Beer')
     }.to change{Beer.count}.by(1)
+
+    expect(page).to have_content 'Beer was successfully created.'
   end
 
   it "can not be added if name is not given" do
