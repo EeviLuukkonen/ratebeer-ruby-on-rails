@@ -10,4 +10,9 @@ class User < ApplicationRecord
   validates :password, format: { with: /^(?=.*[A-Z])(?=.*\d)/, message: "must contain at least one uppercase letter and one number", multiline: true }
 
   has_many :ratings, dependent: :destroy
+  def favorite_beer
+    return nil if ratings.empty?
+
+    ratings.max_by(&:score).beer
+  end
 end
