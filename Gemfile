@@ -86,6 +86,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'launchy'
   gem 'simplecov', require: false
+  gem 'rubocop'
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
