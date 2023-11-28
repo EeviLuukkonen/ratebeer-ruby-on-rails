@@ -4,7 +4,8 @@ include Helpers
 
 describe "User" do
   before :each do
-    FactoryBot.create :user
+    @user = FactoryBot.create :user
+    @user2 = FactoryBot.create :user, username: "Kalle", password: "Password1", password_confirmation: "Password1"
   end
 
   describe "who has signed up" do
@@ -32,5 +33,41 @@ describe "User" do
     expect{
       click_button('Create User')
     }.to change{User.count}.by(1)
+  end
+
+  describe "who has signed in" do
+    before :each do
+      sign_in(username: "Pekka", password: "Foobar1")
+    end
+
+    describe "and has ratings" do
+      before :each do
+        FactoryBot.create(:rating, score: 10, user: @user)
+        FactoryBot.create(:rating, score: 20, user: @user)
+        visit user_path(@user)
+      end
+
+      it "can see their own ratings on their page" do
+        save_and_open_page
+        expect(page).to have_content 'anonymous 10'
+        expect(page).to have_content 'Has made 2 ratings with average of 15.0'
+      end
+
+      it "can not see other users' ratings" do
+        FactoryBot.create(:rating, score: 30, user: @user2)
+
+        expect(page).not_to have_content 'anonymous 30'
+        expect(page).to have_content 'Has made 2 ratings'
+      end
+
+      it "can delete their own rating" do
+        expect {
+          all('a', text: 'Delete')[0].click
+        }.to change{Rating.count}.from(2).to(1)
+        
+        save_and_open_page
+        expect(page).not_to have_content 'anonymous 10'
+      end
+    end
   end
 end
