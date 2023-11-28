@@ -1,8 +1,12 @@
 require 'rails_helper'
 
+include Helpers
+
 describe "A new beer" do
   before :each do
-    FactoryBot.create(:brewery, name: 'Testbrewery', year: 2000)
+    FactoryBot.create :brewery, name: 'Testbrewery', year: 2000
+    FactoryBot.create :user
+    sign_in(username: "Pekka", password: "Foobar1")
     visit new_beer_path
   end
   it "can be added with a valid name" do
@@ -13,7 +17,6 @@ describe "A new beer" do
     expect{
       click_button('Create Beer')
     }.to change{Beer.count}.by(1)
-
     expect(page).to have_content 'Beer was successfully created.'
   end
 
@@ -24,7 +27,7 @@ describe "A new beer" do
     expect {
       click_button('Create Beer')
     }.not_to change { Beer.count }
-    save_and_open_page
+    
     expect(page).to have_content "Name can't be blank"
   end
 end
