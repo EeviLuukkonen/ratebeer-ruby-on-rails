@@ -13,6 +13,19 @@ class User < ApplicationRecord
   def favorite_beer
     return nil if ratings.empty?
 
-    ratings.max_by(&:score).beer
+    ratings.order(score: :desc).limit(1).first.beer
+  end
+
+  def favorite_style
+    return nil if ratings.empty?
+
+    styles = ratings.group_by { |rating| rating.beer.style }
+
+    average_scores = {}
+    styles.each do |style, style_ratings|
+      total_score = style_ratings.sum(&:score).to_f
+      average_scores[style] = total_score / style_ratings.count
+    end
+    average_scores.max_by { |average_score| average_score }&.first
   end
 end
