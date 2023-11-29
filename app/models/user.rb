@@ -21,11 +21,23 @@ class User < ApplicationRecord
 
     styles = ratings.group_by { |rating| rating.beer.style }
 
-    average_scores = {}
+    total_scores = {}
     styles.each do |style, style_ratings|
-      total_score = style_ratings.sum(&:score).to_f
-      average_scores[style] = total_score / style_ratings.count
+      total_scores[style] = style_ratings.sum(&:score)
     end
-    average_scores.max_by { |average_score| average_score }&.first
+    total_scores.max_by { |_style, total_score| total_score }&.first
+  end
+
+  def favorite_brewery
+    return nil if ratings.empty?
+
+    breweries = ratings.group_by { |rating| rating.beer.brewery }
+
+    total_scores = {}
+    breweries.each do |brewery, brewery_ratings|
+      total_scores[brewery.name] = brewery_ratings.sum(&:score)
+    end
+
+    total_scores.max_by { |_brewery, total_score| total_score }&.first
   end
 end

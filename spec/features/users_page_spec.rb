@@ -68,6 +68,11 @@ describe "User" do
         save_and_open_page
         expect(page).not_to have_content 'anonymous 10'
       end
+
+      it "can see their favorite style and brewery" do
+        expect(page).to have_content 'Favourite style: Lager'
+        expect(page).to have_content 'Favourite brewery: anonymous'
+      end
     end
   end
 end
