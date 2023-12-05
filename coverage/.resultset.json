@@ -29,21 +29,29 @@
         "lines": [
           1,
           1,
-          3,
+          0,
+          0,
           null,
-          3,
-          3,
           null,
-          3,
+          1,
+          0,
           null,
-          2,
-          2,
-          3,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
           null,
           null,
           null,
           1,
-          3,
+          0,
+          0,
+          null,
+          0,
           null,
           null
         ]
@@ -51,6 +59,41 @@
       "/home/luee/a.KURSSIT/ror/ratebeer2/app/models/place.rb": {
         "lines": [
           1,
+          1,
+          5,
+          null,
+          null
+        ]
+      },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/controllers/places_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          3,
+          3,
+          1,
+          null,
+          2,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          12,
+          null,
+          0,
+          null,
+          null,
           1,
           0,
           null,
@@ -69,26 +112,6 @@
       },
       "/home/luee/a.KURSSIT/ror/ratebeer2/app/channels/application_cable/connection.rb": {
         "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/luee/a.KURSSIT/ror/ratebeer2/app/controllers/application_controller.rb": {
-        "lines": [
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
           0,
           0,
           0,
@@ -257,25 +280,6 @@
           0,
           null,
           null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/luee/a.KURSSIT/ror/ratebeer2/app/controllers/places_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -587,6 +591,6 @@
         }
       }
     },
-    "timestamp": 1701775689
+    "timestamp": 1701785690
   }
 }

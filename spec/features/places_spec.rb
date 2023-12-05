@@ -29,11 +29,13 @@ describe "Places" do
   end
 
   it "if none are returned by the API, it shows a notification about it" do
+    allow(BeermappingApi).to receive(:places_in).with("notaplace").and_return(
+      []
+    )
     visit places_path
-    fill_in('city', with: 'kumpula')
+    fill_in('city', with: 'notaplace')
     click_button "Search"
-    save_and_open_page
 
-    expect(page).to have_content "No locations in kumpula"
+    expect(page).to have_content "No locations in notaplace"
   end
 end
