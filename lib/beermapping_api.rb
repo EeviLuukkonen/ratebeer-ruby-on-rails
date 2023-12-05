@@ -18,6 +18,14 @@ class BeermappingApi
     end
   end
 
+  def self.get_place(place_id)
+    url = "http://beermapping.com/webservice/locquery/#{key}/"
+
+    response = HTTParty.get "#{url}#{ERB::Util.url_encode(place_id)}"
+    place = response.parsed_response["bmp_locations"]["location"]
+    Place.new(place)
+  end
+
   def self.key
     return nil if Rails.env.test? # testatessa ei apia tarvita, palautetaan nil
     raise 'BEERMAPPING_APIKEY env variable not defined' if ENV['BEERMAPPING_APIKEY'].nil?
