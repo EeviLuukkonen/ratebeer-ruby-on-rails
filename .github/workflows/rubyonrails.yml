@@ -10,6 +10,9 @@ on:
     branches: [ "main" ] # Jos repositoriosi päähaara ei ole main, muuta nämä
   pull_request:
     branches: [ "main" ]
+env:
+  BEERMAPPING_APIKEY: 24110af4f844956306c4ac25dc1cdc12
+
 jobs:
   test:
     runs-on: ubuntu-22.04
