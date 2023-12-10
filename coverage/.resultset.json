@@ -7,6 +7,12 @@
           null
         ]
       },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/helpers/beer_clubs_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/home/luee/a.KURSSIT/ror/ratebeer2/app/helpers/beers_helper.rb": {
         "lines": [
           1,
@@ -14,6 +20,12 @@
         ]
       },
       "/home/luee/a.KURSSIT/ror/ratebeer2/app/helpers/breweries_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/helpers/memberships_helper.rb": {
         "lines": [
           1,
           null
@@ -54,7 +66,7 @@
           1,
           null,
           1,
-          18,
+          8,
           null,
           8,
           null,
@@ -76,13 +88,16 @@
           null,
           1,
           1,
-          19,
+          null,
+          1,
+          1,
+          9,
           null,
           8,
           null,
           null,
           1,
-          19,
+          9,
           null,
           22,
           null,
@@ -94,7 +109,7 @@
           null,
           null,
           1,
-          19,
+          9,
           null,
           22,
           null,
@@ -270,6 +285,22 @@
           null
         ]
       },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/models/membership.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/models/beer_club.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/home/luee/a.KURSSIT/ror/ratebeer2/app/controllers/beers_controller.rb": {
         "lines": [
           1,
@@ -284,6 +315,8 @@
           null,
           null,
           1,
+          0,
+          0,
           null,
           null,
           null,
@@ -562,6 +595,173 @@
         "branches": {
         }
       },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/controllers/beer_clubs_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/luee/a.KURSSIT/ror/ratebeer2/app/controllers/memberships_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/home/luee/a.KURSSIT/ror/ratebeer2/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -586,6 +786,6 @@
         }
       }
     },
-    "timestamp": 1701793424
+    "timestamp": 1702205884
   }
 }

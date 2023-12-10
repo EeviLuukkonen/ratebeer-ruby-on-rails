@@ -2,9 +2,27 @@
 
 <%= render @beer_club %>
 
-<div>
+<% if current_user %>
+<% if current_user.memberships.map{ |m| m.beer_club_id }.exclude?(@beer_club.id) %>
+  <div>
+    <%= form_with(model: @membership) do |form| %>
+    <%= form.hidden_field :beer_club_id, value: @beer_club.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit "Join the beer club" %>
+  </div>
+  <% end %>
+<% else %>
+  <%= form_with(model: @membership, method: :delete) do |form| %>
+    <%= form.hidden_field :beer_club_id, value: @beer_club.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit "End the membership" %>
+  <% end %>
+<% end %>
+
   <%= link_to "Edit this beer club", edit_beer_club_path(@beer_club) %> |
   <%= link_to "Back to beer clubs", beer_clubs_path %>
 
   <%= button_to "Destroy this beer club", @beer_club, method: :delete %>
-</div>
+<% end %>
+
+
