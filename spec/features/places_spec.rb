@@ -6,6 +6,10 @@ describe "Places" do
       [ Place.new( name: "Oljenkorsi", id: 1 ) ]
     )
 
+    allow(WeatherstackApi).to receive(:get_weather_in).with("kumpula").and_return(
+      Weather.new( temperature: 2, weather_icons: [] )
+    )
+
     visit places_path
     fill_in('city', with: 'kumpula')
     click_button "Search"
@@ -17,6 +21,10 @@ describe "Places" do
     allow(BeermappingApi).to receive(:places_in).with("mikkeli").and_return(
       [ Place.new( name: "Jälkipeli", id: 1 ),
         Place.new( name: "Wilhelm", id: 2 ) ],
+    )
+
+    allow(WeatherstackApi).to receive(:get_weather_in).with("mikkeli").and_return(
+      Weather.new( temperature: 2, weather_icons: [] )
     )
 
     visit places_path
@@ -32,6 +40,9 @@ describe "Places" do
     allow(BeermappingApi).to receive(:places_in).with("notaplace").and_return(
       []
     )
+
+    allow(WeatherstackApi).to receive(:get_weather_in).with("notaplace").and_return(nil)
+
     visit places_path
     fill_in('city', with: 'notaplace')
     click_button "Search"
