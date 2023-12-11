@@ -97,3 +97,7 @@ gem "sentry-ruby", "~> 5.12"
 gem "sentry-rails", "~> 5.12"
 
 gem 'httparty'
+
+gem 'bootstrap', '~> 5.2.0'
+gem 'jquery-rails'
+gem 'mini_racer', '>=0.2.1'

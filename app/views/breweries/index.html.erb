@@ -1,28 +1,36 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Breweries</h1>
-
-<p> <%= link_to 'List of beers', beers_path %> <p/>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Established in</th>
+      <th>Number of Beers</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @breweries.each do |brewery| %>
+      <tr id="<%= dom_id brewery %>">
+        <td>
+          <%= link_to brewery.name, brewery %>
+        </td>
+        <td>
+          <%= brewery.year %>
+        </td>
+        <td>
+          <%= brewery.beers.count %>
+        </td>
+        <td>
+          <%= brewery.average_rating %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <p>Number of breweries: <%= @breweries.count %></p>
 
-<div id="breweries">
-  <% @breweries.each do |brewery| %>
-    <div id="<%= dom_id brewery %>">
-      <p>
-        <%= link_to brewery.name, brewery %>
-      </p>
-    
-      <p>
-        <strong>Year:</strong>
-        <%= brewery.year %>
-      </p>
-    
-    </div>
-  <% end %>
-</div>
-
-<%= link_to('New Brewery', new_brewery_path) if current_user %>
+<%= link_to('New Brewery', new_brewery_path, class:'btn btn-primary') if current_user %>
 
 
 

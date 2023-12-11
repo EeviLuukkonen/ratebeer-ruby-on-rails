@@ -49,7 +49,7 @@ describe "User" do
 
       it "can see their own ratings on their page" do
         save_and_open_page
-        expect(page).to have_content 'anonymous 10'
+        expect(page).to have_content 'anonymous: 10'
         expect(page).to have_content 'Has made 2 ratings with average of 15.0'
       end
 

@@ -1,14 +1,13 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Users</h1>
 
-<div id="users">
+<br>
+<ul class="list-group">
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+    <li class="list-group-item">
+      <%= link_to user.username, user %>
+    </li>
   <% end %>
-</div>
+</ul>
+<br>
 
-<%= link_to "New user", new_user_path %>
+<%= link_to "New user", new_user_path, class:'btn btn-primary' %>

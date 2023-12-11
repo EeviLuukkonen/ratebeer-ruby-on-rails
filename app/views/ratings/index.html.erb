@@ -1,10 +1,23 @@
-<h2>List of ratings</h2>
+<h1>Beer ratings</h1>
 
-<ul>
- <% @ratings.each do |rating| %>
-   <li> <%= "#{rating.beer.name}:" + " #{rating.score}" %> <%= link_to rating.user.username, rating.user %> </li>
- <% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Beer Name</th>
+      <th>Score</th>
+      <th>Given by</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ratings.each do |rating| %>
+      <tr>
+        <td><%= link_to rating.beer.name, rating.beer %></td>
+        <td><%= rating.score %></td>
+        <td><%= link_to rating.user.username, rating.user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <p>
   Number of ratings: 
@@ -12,5 +25,5 @@
 </p>
 
 <p>
-  <%= link_to "New rating", new_rating_path if current_user%>
+  <%= link_to "New rating", new_rating_path, class:'btn btn-primary' if current_user%>
 </p>

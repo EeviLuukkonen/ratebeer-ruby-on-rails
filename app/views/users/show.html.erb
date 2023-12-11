@@ -1,12 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
 <div>
-  <h3>
-    <strong>Username:</strong>
-  </h3>
-  <p>
-    <%= @user.username %>
-  </p>
+  <h1>
+    User <%= @user.username %>
+  </h1>
+  <br>
   <% if @user.ratings.empty? %>
   <p>
     Has not made any ratings
@@ -23,7 +19,7 @@
     <div> Favourite style: <%= @user.favorite_style %> </div>
     <div> Favourite brewery: <%= @user.favorite_brewery %> </div>
   <% end %>
-
+  <br>
   <% if @user.beer_clubs.empty? %>
     Has not joined any club
   <% else %>
@@ -38,24 +34,22 @@
     </ul>
   <% end %>
 
-  <p>
-    <strong>Ratings</strong>
-  </p>
+  <h4>Ratings</h4>
   <ul>
     <% @user.ratings.each do |rating| %>
       <li><%= "#{rating.to_s}" %>
         <% if @user == current_user %>
-          <%= link_to "Delete", rating, data: {turbo_method: :delete} %>
+          <%= link_to "Delete", rating, data: {turbo_method: :delete}, class:'btn btn-outline-danger btn-sm' %>
         <% end %>
       </li>
     <% end %>
   </ul>
 
   <% if @user == current_user %>
-    <p> <%= link_to "Edit user", edit_user_path(@user) %> </p>
-    <p> <%= button_to "Destroy user", @user, method: :delete %> </p>
+    <p>
+      <%= link_to "Edit user", edit_user_path(@user), class:'btn btn-primary' %>
+      <%= button_to "Destroy user", @user, method: :delete, class:'btn btn-danger' %> 
+    </p>
   <% end %>
-
-  <%= link_to "Back to users", users_path %>
 
 </div>
