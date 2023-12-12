@@ -43,4 +43,14 @@ class User < ApplicationRecord
 
     total_scores.max_by { |_brewery, total_score| total_score }&.first
   end
+
+  def self.top(amount)
+    sorted_users = User
+                   .select('users.*, COUNT(ratings.id) AS ratings_count')
+                   .joins(:ratings)
+                   .group('users.id')
+                   .order('COUNT(ratings.id) DESC')
+
+    sorted_users.take(amount)
+  end
 end

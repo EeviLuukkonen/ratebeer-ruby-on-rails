@@ -1,4 +1,7 @@
 <h1>Breweries</h1>
+
+<h3>Active</h3>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -9,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @breweries.each do |brewery| %>
+    <% @active_breweries.each do |brewery| %>
       <tr id="<%= dom_id brewery %>">
         <td>
           <%= link_to brewery.name, brewery %>
@@ -28,7 +31,40 @@
   </tbody>
 </table>
 
-<p>Number of breweries: <%= @breweries.count %></p>
+<p> Number of active breweries: <%= @active_breweries.count %> </p>
+
+<h3>Retired</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Established in</th>
+      <th>Number of Beers</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @retired_breweries.each do |brewery| %>
+      <tr id="<%= dom_id brewery %>">
+        <td>
+          <%= link_to brewery.name, brewery %>
+        </td>
+        <td>
+          <%= brewery.year %>
+        </td>
+        <td>
+          <%= brewery.beers.count %>
+        </td>
+        <td>
+          <%= brewery.average_rating %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p> Number of retired breweries: <%= @retired_breweries.count %> </p>
 
 <%= link_to('New Brewery', new_brewery_path, class:'btn btn-primary') if current_user %>
 

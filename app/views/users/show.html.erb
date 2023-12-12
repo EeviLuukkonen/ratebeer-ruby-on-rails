@@ -33,7 +33,7 @@
       <% end %>
     </ul>
   <% end %>
-
+  <p>
   <h4>Ratings</h4>
   <ul>
     <% @user.ratings.each do |rating| %>
@@ -44,12 +44,10 @@
       </li>
     <% end %>
   </ul>
+  </p>
 
   <% if @user == current_user %>
-    <p>
-      <%= link_to "Edit user", edit_user_path(@user), class:'btn btn-primary' %>
-      <%= button_to "Destroy user", @user, method: :delete, class:'btn btn-danger' %> 
-    </p>
+    <%= edit_and_destroy_buttons(@user) %>
   <% end %>
 
 </div>

@@ -1,9 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @beer %>
-
+<br>
 <% if current_user %>
-  <h4>give a rating:<h4>
+  <h4>give a rating:</h4>
 
   <%= form_with(model: @rating) do |form| %>
     <%= form.hidden_field :beer_id %>
@@ -13,9 +13,5 @@
   <p></p>
 
   <p>
-    <%= link_to "Edit this beer", edit_beer_path(@beer), class:'btn btn-primary' %>
-  </p>
-  <p>
-    <%= button_to "Destroy this beer", @beer, method: :delete, class:'btn btn-primary' %>
-  </p>
+    <%= edit_and_destroy_buttons(@beer) %>
 <% end %>

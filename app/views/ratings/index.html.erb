@@ -1,23 +1,81 @@
-<h1>Beer ratings</h1>
+<h1>Ratings</h1>
+<br>
+<div class="row">
+  <div class="col">
+    <h3>Best breweries</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Brewery</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @top_breweries.each do |brewery| %>
+          <tr>
+            <td><%= brewery.name %></td>
+            <td><%= brewery.average_rating %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Beer Name</th>
-      <th>Score</th>
-      <th>Given by</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @ratings.each do |rating| %>
-      <tr>
-        <td><%= link_to rating.beer.name, rating.beer %></td>
-        <td><%= rating.score %></td>
-        <td><%= link_to rating.user.username, rating.user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="col">
+    <h3>Best beers</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Beer</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @top_beers.each do |beer| %>
+          <tr>
+            <td><%= beer.name %></td>
+            <td><%= beer.average_rating %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col">
+    <h3>Best styles</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Style</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @top_styles.each do |style, rating| %>
+          <tr>
+            <td><%= style %></td>
+            <td><%= round(rating) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h3>Most active users</h3>
+
+<% @top_raters.each do |rater| %>
+  <li> <%= rater.username %>, <%= rater.ratings_count %> ratings</li>
+<% end %>
+<br>
+
+<h3>Recent ratings</h3>
+
+<% @recent_ratings.each do |rating| %>
+  <li> <%= rating.to_s %>, <%= rating.created_at %> </li>
+<% end %>
+
+<br>
 
 <p>
   Number of ratings: 
