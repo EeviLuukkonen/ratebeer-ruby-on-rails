@@ -29,6 +29,8 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
     steps:
+      - name: Update Bundler
+        run: gem update bundler
       - name: Checkout code
         uses: actions/checkout@v3
       # Add or replace dependency steps here
