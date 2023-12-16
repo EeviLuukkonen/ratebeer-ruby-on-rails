@@ -100,4 +100,4 @@ gem 'httparty'
 
 gem 'bootstrap', '~> 5.2.0'
 gem 'jquery-rails'
-gem 'mini_racer', '~> 0.6.0'
+gem 'mini_racer'
