@@ -63,6 +63,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def toggle_activity
+    user = User.find(params[:id])
+    user.update_attribute :locked, !user.locked
+
+    new_status = user.locked? ? "locked" : "active"
+
+    redirect_to user, notice: "User's account is #{new_status}"
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -72,6 +81,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :locked)
   end
 end

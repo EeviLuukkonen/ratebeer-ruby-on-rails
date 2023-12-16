@@ -1,6 +1,9 @@
 <div>
   <h1>
     User <%= @user.username %>
+    <% if @user.locked and current_user.admin %>
+      <span class="badge bg-secondary">locked</span>
+    <% end %>
   </h1>
   <br>
   <% if @user.ratings.empty? %>
@@ -34,17 +37,25 @@
     </ul>
   <% end %>
   <p>
-  <h4>Ratings</h4>
-  <ul>
-    <% @user.ratings.each do |rating| %>
-      <li><%= "#{rating.to_s}" %>
-        <% if @user == current_user %>
-          <%= link_to "Delete", rating, data: {turbo_method: :delete}, class:'btn btn-outline-danger btn-sm' %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-  </p>
+  <% if not @user.ratings.empty? %>
+    <h4>Ratings</h4>
+    <ul>
+      <% @user.ratings.each do |rating| %>
+        <li><%= "#{rating.to_s}" %>
+          <% if @user == current_user %>
+            <%= link_to "Delete", rating, data: {turbo_method: :delete}, class:'btn btn-outline-danger btn-sm' %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p>
+
+  <% if current_user and current_user.admin %>
+    <div>
+      <%= link_to "Change account status", toggle_activity_user_path(@user.id), data: {turbo_method: "post"}, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
   <% if @user == current_user %>
     <%= edit_and_destroy_buttons(@user) %>
