@@ -1,22 +1,19 @@
 class Beer < ApplicationRecord
   include RatingAverage
+  extend Top
 
   validates :name, presence: true
   validates :style, presence: true
 
   belongs_to :brewery
   has_many :ratings, dependent: :destroy
+
   def to_s
     "#{name},  #{brewery.name}"
   end
 
-  def self.top(amount)
-    sorted_beers = Beer.all.sort_by(&:average_rating).reverse
-
-    sorted_beers.take(amount)
-  end
-
   def self.top_styles(amount)
+    # koska viikolla 5 jäi toteuttamatta stylet tietokantatasolla, selvitetään top styles oluen kautta
     styles = Beer.all.group_by(&:style)
 
     average_ratings = self.average_ratings(styles)

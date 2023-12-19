@@ -27,7 +27,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership.beer_club, notice: "#{current_user.username}, welcome to the club!" }
+        format.html { redirect_to @membership.beer_club, notice: "Membership application succeeded!" }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,6 +57,13 @@ class MembershipsController < ApplicationController
       format.html { redirect_to user_path(current_user), notice: "Your membership in #{@membership.beer_club.name} has ended." }
       format.json { head :no_content }
     end
+  end
+
+  def confirm_application
+    membership = Membership.find(params[:id])
+    membership.update_attribute :confirmed, true
+
+    redirect_to membership.beer_club, notice: "User's membership in #{membership.beer_club.name} confirmed!"
   end
 
   private

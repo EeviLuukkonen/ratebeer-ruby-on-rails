@@ -31,7 +31,7 @@ describe "User" do
     fill_in('user_password_confirmation', with: 'Secret55')
 
     expect{
-      click_button('Create User')
+      click_button('Create user')
     }.to change{User.count}.by(1)
   end
 
@@ -50,7 +50,7 @@ describe "User" do
       it "can see their own ratings on their page" do
         save_and_open_page
         expect(page).to have_content 'anonymous: 10'
-        expect(page).to have_content 'Has made 2 ratings with average of 15.0'
+        expect(page).to have_content 'Has made 2 ratings with average of 15'
       end
 
       it "can not see other users' ratings" do

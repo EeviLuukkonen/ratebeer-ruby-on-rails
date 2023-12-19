@@ -10,16 +10,17 @@
 <% if @places %>
 
 <% if @weather %>
-  <div>
+  <p>
     <h3>The current beer weather in <%= @places.first.city%></h3>
     <p><%= @weather.temperature %> Celsius</p>
     <%@weather.weather_icons.each do |url|%>
         <%= image_tag image_url(url) %>
     <% end %>
-    <p>Wind <%= @weather.wind_speed %> m/s, direction: <%= @weather.wind_dir %></p>
-  </div>
+    <p>Wind <%= @weather.wind_speed %> km/h, direction: <%= @weather.wind_dir %></p>
+  </p>
 <% end %>
 
+  <h3>Beer places in <%= @places.first.city%></h3>
   <table class="table table-hover">
   <thead>
     <th>id</th>

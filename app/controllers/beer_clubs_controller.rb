@@ -19,6 +19,11 @@ class BeerClubsController < ApplicationController
     @membership = Membership.new
     @membership.beer_club = @beer_club
     @membership.user = current_user
+    @confirmed_members = @beer_club.confirmed_members
+    @applied_memberships = @beer_club.applied_memberships
+
+    return unless current_user.present?
+
     return unless current_user.beer_clubs.exists?(@beer_club.id)
 
     @membership = Membership.find_by(user_id: current_user.id, beer_club_id: @beer_club.id)
@@ -39,6 +44,7 @@ class BeerClubsController < ApplicationController
 
     respond_to do |format|
       if @beer_club.save
+        current_user.memberships.create(beer_club: @beer_club, confirmed: true)
         format.html { redirect_to beer_club_url(@beer_club), notice: "Beer club was successfully created." }
         format.json { render :show, status: :created, location: @beer_club }
       else

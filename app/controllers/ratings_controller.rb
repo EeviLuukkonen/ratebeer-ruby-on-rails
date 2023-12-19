@@ -2,12 +2,33 @@ class RatingsController < ApplicationController
   before_action :ensure_that_signed_in, except: [:index, :show]
 
   def index
+    # Nopeutin metodia Sucker Punchia ja cachea käyttämällä.
+    # Kaikki tiedot haetaan välimuistista, ja jos niitä ei ole,
+    # tehdään tietokantakyselyt ja lisätään ne välimuistiin.
+    cache_keys = %w[recent_ratings top_breweries top_beers top_styles top_raters]
+    @recent_ratings, @top_breweries, @top_beers, @top_styles, @top_raters = cache_keys.map do |key|
+      Rails.cache.read(key) || perform_and_cache(key)
+    end
+
     @ratings = Rating.all
-    @recent_ratings = Rating.recent
-    @top_breweries = Brewery.top 3
-    @top_beers = Beer.top 3
-    @top_styles = Beer.top_styles 3
-    @top_raters = User.top 3
+  end
+
+  def perform_and_cache(key)
+    data = case key
+           when 'recent_ratings'
+             Rating.recent
+           when 'top_breweries'
+             Brewery.top(3)
+           when 'top_beers'
+             Beer.includes(:brewery, :ratings).top(3)
+           when 'top_styles'
+             Beer.top_styles(3)
+           when 'top_raters'
+             User.top(3)
+           end
+
+    RatingJob.perform_async(key, data)
+    data
   end
 
   def new

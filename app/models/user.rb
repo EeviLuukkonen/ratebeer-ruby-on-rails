@@ -12,6 +12,12 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :beer_clubs, through: :memberships
 
+  has_many :confirmed_memberships, -> { where(confirmed: true) }, class_name: "Membership"
+  has_many :confirmed_beer_clubs, through: :confirmed_memberships, source: :beer_club
+
+  has_many :applied_memberships, -> { where(confirmed: [nil, false]) }, class_name: "Membership"
+  has_many :applied_beer_clubs, through: :applied_memberships, source: :beer_club
+
   has_many :ratings, dependent: :destroy
   def favorite_beer
     return nil if ratings.empty?

@@ -5,7 +5,6 @@
       <span class="badge bg-secondary">locked</span>
     <% end %>
   </h1>
-  <br>
   <% if @user.ratings.empty? %>
   <p>
     Has not made any ratings
@@ -29,10 +28,20 @@
     <h4>Memberships</h4>
 
     <ul>
-      <% @user.beer_clubs.each do |club| %>
+      <% @user.confirmed_beer_clubs.each do |club| %>
         <li>
           <%= link_to club.name, club %>
-        </il>
+        </li>
+      <% end %>
+    </ul>
+
+  <h4>Applied memberships</h4>
+
+    <ul>
+      <% @user.applied_beer_clubs.each do |club| %>
+        <li>
+          <%= link_to club.name, club %>
+        </li>
       <% end %>
     </ul>
   <% end %>

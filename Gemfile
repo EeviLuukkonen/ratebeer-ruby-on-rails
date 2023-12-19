@@ -100,3 +100,5 @@ gem 'httparty'
 
 gem 'bootstrap', '~> 5.2.0'
 gem 'jquery-rails'
+gem 'rack-mini-profiler'
+gem 'sucker_punch', '~> 3.0'

@@ -15,9 +15,20 @@
 
   <h4>members</h4>
 
-  <% beer_club.members.each do |member| %>
+  <% @confirmed_members.each do |member| %>
     <p>
       <%= link_to member.username, member %>
+    </p>
+  <% end %>
+
+  <h4>membership applications</h4>
+
+  <% @applied_memberships.each do |membership| %>
+    <p>
+      <%= link_to membership.user.username, membership.user %> (Waiting for confirmation)
+      <% if not current_user == membership.user %>
+        <%= link_to "confirm", confirm_application_membership_path(membership), data: {turbo_method: "post"}, class: "btn btn-primary" %>
+      <% end %>
     </p>
   <% end %>
 
