@@ -38,7 +38,6 @@ describe "Beerlist page" do
   it "when style is clicked shows beers in alphabetical order by style name", js:true do
     visit beerlist_path
     find_by_id("style").click
-    save_and_open_page
     first = find('#beertable').first('.tablerow')
     second = find('#beertable').all('.tablerow')[1]
     third = find('#beertable').all('.tablerow')[2]
@@ -50,7 +49,6 @@ describe "Beerlist page" do
   it "when brewery is clicked shows beers in alphabetical order by style name", js:true do
     visit beerlist_path
     find_by_id("brewery").click
-    save_and_open_page
     first = find('#beertable').first('.tablerow')
     second = find('#beertable').all('.tablerow')[1]
     third = find('#beertable').all('.tablerow')[2]
