@@ -30,7 +30,6 @@ describe "Rating" do
     FactoryBot.create(:rating, score: 10, user: user)
     FactoryBot.create(:rating, score: 20, user: user)
     visit ratings_path
-    save_and_open_page
     expect(page).to have_content :beer.name
     expect(page).to have_content "10"
     expect(page).to have_content "Number of ratings: 2"

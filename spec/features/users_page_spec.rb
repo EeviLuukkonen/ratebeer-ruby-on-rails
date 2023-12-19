@@ -48,7 +48,6 @@ describe "User" do
       end
 
       it "can see their own ratings on their page" do
-        save_and_open_page
         expect(page).to have_content 'anonymous: 10'
         expect(page).to have_content 'Has made 2 ratings with average of 15'
       end
@@ -65,7 +64,6 @@ describe "User" do
           all('a', text: 'Delete')[0].click
         }.to change{Rating.count}.from(2).to(1)
         
-        save_and_open_page
         expect(page).not_to have_content 'anonymous 10'
       end
 
